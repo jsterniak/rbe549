@@ -1,0 +1,23 @@
+function cube_points = makeCubeInSpace(side_length, cube_center)
+%MAKECUBEINSPACE creates vertices defining a cube
+%   generates 8 x,y,z triplets representing vertices of a cube centered
+%   at the x,y,z triplet center with sides of length side_length
+unit_cube = makeUnitCubeWithVertexAtOrigin;
+
+unit_cube_center = mean(unit_cube);
+assert(isvector(cube_center) && 3 == length(cube_center), 'cube_center must be x,y,z vector');
+translation = cube_center - unit_cube_center;
+
+cube_points = side_length * unit_cube + translation;
+end
+
+function cube_points = makeUnitCubeWithVertexAtOrigin
+cube_points = [0 0 0;...
+               0 0 1;...
+               0 1 0;...
+               0 1 1;...
+               1 0 0;...
+               1 0 1;...
+               1 1 0;...
+               1 1 1];
+end
