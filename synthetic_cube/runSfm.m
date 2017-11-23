@@ -99,7 +99,7 @@ hold off
 loc1 = camPoses.Location{1};
 xlim([loc1(1)-3, loc1(1)+3]);
 ylim([loc1(2)-2, loc1(2)+2]);
-zlim([loc1(3)-1, loc1(3)+6]);
+zlim([loc1(3)-1, loc1(3)+7]);
 camorbit(0, -30);
 
 title('Refined Camera Poses');
@@ -162,7 +162,7 @@ hold off
 loc1 = camPoses.Location{1};
 xlim([loc1(1)-3, loc1(1)+3]);
 ylim([loc1(2)-2, loc1(2)+2]);
-zlim([loc1(3)-1, loc1(3)+6]);
+zlim([loc1(3)-1, loc1(3)+7]);
 camorbit(0, -30);
 
 title('Dense Reconstruction');

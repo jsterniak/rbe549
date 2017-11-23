@@ -8,8 +8,12 @@ assert(isvector(camera_orientation) && 3 == length(camera_orientation),...
     'camera_orientation must be ZYX euler angle vector');
 % invert angles and apply in reverse sequence to determine transformation
 % matrix
-world_orientation = -[camera_orientation(3), camera_orientation(2), camera_orientation(1)];
-world_to_camera_rotation_matrix = eul2rotm(world_orientation,'XYZ');
+% world_orientation = -[camera_orientation(3), camera_orientation(2), camera_orientation(1)];
+% world_to_camera_rotation_matrix = eul2rotm(world_orientation,'XYZ');
+% support for eul2rotm r2017a
+world_to_camera_rotation_matrix = eul2rotm([0 0 -camera_orientation(3)]);
+world_to_camera_rotation_matrix = world_to_camera_rotation_matrix * eul2rotm([0 -camera_orientation(2) 0]);
+world_to_camera_rotation_matrix = world_to_camera_rotation_matrix * eul2rotm([-camera_orientation(1) 0 0]);
 world_to_camera_rotation_matrix = [world_to_camera_rotation_matrix zeros(3,1); zeros(1,3) 1];
 
 assert(isvector(camera_location) && 3 == length(camera_location),...
